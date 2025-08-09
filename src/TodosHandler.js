@@ -1,5 +1,5 @@
 class Todo {
-    constructor(title, description, dueDate ,priority , category = "Projects") {
+    constructor(title, description, dueDate ,priority , category) {
         this.id = crypto.randomUUID();
         this.title = title;
         this.description = description; 
@@ -20,6 +20,10 @@ export const Todos = (() => {
         if (index !== -1) {
             todos.splice(index, 1);
         }
+        else {
+            console.error(`Todo with ID ${id} not found`);
+        }
+        console.log(`Todo with ID ${id} deleted`);
     }
     const findTodo = (id) => {
         return todos.find(todo => todo.id === id);
@@ -34,5 +38,5 @@ export const Todos = (() => {
             todo.category = update.category;
         }
     }
-    return { addTodo, deleteTodo, findTodo, editTodo };
+    return { addTodo, deleteTodo, findTodo, editTodo , todos };
 })();

@@ -3,13 +3,42 @@
 <head>
     <meta charset="UTF-8" />
     <title>Todo List</title>
+    <script src="index.js" defer></script>
 </head>
 <body>
     <header></header>
     <nav></nav>
     <main>
-        <section id="newTodoSection"></section>
-        <section id="TodosSection"></section>
+        <section id="newTodoSection">
+            <form id="newtodoForm">
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" required /><br><br>
+            
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="4"></textarea><br><br>
+            
+                <label for="dueDate">Due Date:</label><br>
+                <input type="date" id="dueDate" name="dueDate" required /><br><br>
+            
+                <label for="priority">Priority:</label><br>
+                <select id="priority" name="priority" required>
+                    <option value="">--Select Priority--</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select><br><br>
+            
+                <label for="category">Category:</label><br>
+                <select id="category" name="category" required>
+                    <option value="projects">Projects</option>
+                </select><br><br>
+            
+                <button type="submit">Add Todo</button>
+            </form>
+        </section>
+        <section id="TodosSection">
+            <div class="TodoList"></div>
+        </section>
     </main>
 </body>
 </html>
