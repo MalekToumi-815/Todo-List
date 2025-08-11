@@ -1,5 +1,6 @@
 import {Todos} from './TodosHandler.js';
 import { DOM } from './DOMHandler.js';
+import './styles.css';
 // Event listener for the new todo form submission
 const form = document.getElementById('newtodoForm');
 form.addEventListener('submit', function (event) {
