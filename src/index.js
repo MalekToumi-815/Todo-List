@@ -11,8 +11,8 @@ form.addEventListener('submit', function (event) {
     const dueDate = document.getElementById('dueDate').value;
     // Logic to handle the new todo item
     console.log(`New Todo: ${title}, ${description}, ${priority}, ${category}, ${dueDate}`);
-    const newtodo = Todos.addTodo(title, description, dueDate, priority, category);
-    DOM.newTodo(newtodo);
+    Todos.addTodo(title, description, dueDate, priority, category);
+    DOM.displayTodo(Todos.todos);
     // Reset the form after submission
     form.reset();
 });
