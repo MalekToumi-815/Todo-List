@@ -62,8 +62,9 @@ main{
 }
 
 .form-group label {
-    font-size: 0.85rem;
+    font-size: 1rem;
     margin-bottom: 4px;
+    font-weight: 600;
 }
 
 input,
@@ -83,6 +84,10 @@ textarea {
     border-radius: 20px;
     margin: 10px 10px;
     box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px, rgb(0 0 0 / 6%) 0px 2px 4px -1px;
+    padding: 8px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content 1fr;
 }
 .todo-item{
     height: 100px;
@@ -98,4 +103,36 @@ textarea {
 .todo-item:hover{
     transform: translateY(-4px);
     cursor: pointer;
+}
+
+.readonly input ,.readonly textarea, .readonly select{
+    pointer-events: none;
+    border: none;
+}
+.readonly button{
+    display: none;
+}
+#detailstodoForm{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+    grid-column: 1 / -1;
+}
+.icon{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 5px;
+}
+.icon-container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+}
+.icon-container img:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
 }

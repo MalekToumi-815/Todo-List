@@ -17,11 +17,25 @@ form.addEventListener('submit', function (event) {
     // Reset the form after submission
     form.reset();
 });
-// Event listener for the delete button
+// Event listener for Todolist
 document.querySelector('.TodoList').addEventListener('click', (e) => {
-    if (!e.target.classList.contains('delete-todo')) return;
-    const id = e.target.dataset.id;
-    Todos.deleteTodo(id);
-    const parent = e.target.parentElement;
-    parent.remove();
+    if (e.target.classList.contains('delete-todo')) {
+        const id = e.target.dataset.id;
+        Todos.deleteTodo(id);
+        const parent = e.target.parentElement;
+        parent.remove();
+    }
+    else if (e.target.classList.contains('todo-item')) {
+        const todoId = e.target.closest('.todo-item').querySelector('.delete-todo').dataset.id;
+        const todo = Todos.findTodo(todoId);
+        DOM.displayTodoDetails(todo);
+    }
+    else return;
 })
+// Event listener for TodoDetails
+document.querySelector("#TodoDetails").addEventListener("click", (e) => {
+    if (e.target.id === "closeIcon") {
+        document.querySelector("#detailstodoForm").innerHTML = "";
+    }
+    else return;
+});
