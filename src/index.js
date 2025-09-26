@@ -32,10 +32,36 @@ document.querySelector('.TodoList').addEventListener('click', (e) => {
     }
     else return;
 })
-// Event listener for TodoDetails
+// Event listener for TodoDetails closing & editing
 document.querySelector("#TodoDetails").addEventListener("click", (e) => {
     if (e.target.id === "closeIcon") {
         document.querySelector("#detailstodoForm").innerHTML = "";
+        document.querySelector("#detailstodoForm").classList.add("readonly");
+    }
+    else if (e.target.id === "editIcon") {
+        if (document.querySelector("#detailstodoForm").innerHTML !== ""){
+            document.querySelector("#detailstodoForm").classList.remove("readonly");
+        }
+        else return;
+    }
+    else if (e.target.id === "saveEdit") { 
+        e.preventDefault();
+        const title = document.getElementById('titledetails').value;
+        const description = document.getElementById('descriptiondetails').value;
+        const priority = document.getElementById('prioritydetails').value;
+        const category = document.getElementById('categorydetails').value;
+        const dueDate = document.getElementById('dueDatedetails').value;
+        let edited_todo = {
+            title: title,
+            description: description,
+            dueDate: dueDate,
+            priority: priority,
+            category: category
+        };
+        const id = e.target.dataset.id;
+        Todos.editTodo(id, edited_todo);
+        DOM.displayTodo(Todos.todos);
+        document.querySelector("#detailstodoForm").classList.add("readonly");
     }
     else return;
 });
