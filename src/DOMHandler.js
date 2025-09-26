@@ -19,7 +19,7 @@ const DOM = (() => {
             todoList.appendChild(todoItem); 
         });
     }
-    function displayTodoDetails(todo) {
+    function displayTodoDetails(todo , categories) {
         const tododetails = document.querySelector('#detailstodoForm');
         tododetails.innerHTML = `
             
@@ -52,7 +52,6 @@ const DOM = (() => {
                     <label for="category">Category:</label>
                     <select id="categorydetails" name="category" required>
                         <option value="">--Select Category--</option>
-                        <option value="projects" ${todo.category === "projects" ? "selected" : ""}>Projects</option>
                     </select>
                 </div>
             
@@ -60,7 +59,23 @@ const DOM = (() => {
                     <button id="saveEdit" type="submit" data-id="${todo.id}">Save</button>
                 </div>
         `;
+        const categorySelect = document.querySelector("#categorydetails")
+        let options = ''
+        categories.forEach( category => {
+            console.log(category)
+            options += `<option value="${category}" ${todo.category === category ? "selected" : ""}>${category}</option>`
+        })
+        categorySelect.innerHTML = options
     }
-    return { displayTodo , displayTodoDetails};
+    function loadCategory (categories) {
+        const categorySelect = document.querySelector("#category")
+        let options = '<option value="" disabled selected>--Select Category--</option>'
+        categories.forEach( category => {
+            console.log(category)
+            options += `<option value="${category}">${category}</option>`
+        })
+        categorySelect.innerHTML = options
+    }
+    return { displayTodo , displayTodoDetails , loadCategory};
 })();
 export { DOM };

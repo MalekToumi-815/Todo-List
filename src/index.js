@@ -1,6 +1,11 @@
 import {Todos} from './TodosHandler.js';
 import { DOM } from './DOMHandler.js';
+import { Category } from './CategoryHandler.js';
 import './styles.css';
+//Loading categories when page loads
+document.addEventListener("DOMContentLoaded",() => {
+    DOM.loadCategory(Category.categories);
+})
 // Event listener for the new todo form submission
 const form = document.getElementById('newtodoForm');
 form.addEventListener('submit', function (event) {
@@ -28,7 +33,7 @@ document.querySelector('.TodoList').addEventListener('click', (e) => {
     else if (e.target.classList.contains('todo-item')) {
         const todoId = e.target.closest('.todo-item').querySelector('.delete-todo').dataset.id;
         const todo = Todos.findTodo(todoId);
-        DOM.displayTodoDetails(todo);
+        DOM.displayTodoDetails(todo,Category.categories);
     }
     else return;
 })
@@ -65,3 +70,11 @@ document.querySelector("#TodoDetails").addEventListener("click", (e) => {
     }
     else return;
 });
+//Event listener for new category
+document.querySelector("#newcategoryButton").addEventListener("click", (e) => {
+    e.preventDefault()
+    let newcategory = document.querySelector("#newCategory").value
+    Category.addcategory(newcategory)
+    DOM.loadCategory(Category.categories);
+    document.querySelector("#newCategory").value = ""
+}) 
