@@ -59,6 +59,7 @@ const DOM = (() => {
                     <button id="saveEdit" type="submit" data-id="${todo.id}">Save</button>
                 </div>
         `;
+        //load categories
         const categorySelect = document.querySelector("#categorydetails")
         let options = ''
         categories.forEach( category => {
@@ -69,12 +70,16 @@ const DOM = (() => {
     }
     function loadCategory (categories) {
         const categorySelect = document.querySelector("#category")
-        let options = '<option value="" disabled selected>--Select Category--</option>'
+        const categoryList = document.querySelector("#categoryList")
+        let optionsSelect = '<option value="" disabled selected>--Select Category--</option>'
+        let optionsList = ""
         categories.forEach( category => {
             console.log(category)
-            options += `<option value="${category}">${category}</option>`
+            optionsSelect += `<option value="${category}">${category}</option>`
+            optionsList += `<li class="categoryItem" data-category="${category}">${category}</li>`
         })
-        categorySelect.innerHTML = options
+        categorySelect.innerHTML = optionsSelect
+        categoryList.innerHTML = optionsList
     }
     return { displayTodo , displayTodoDetails , loadCategory};
 })();

@@ -18,7 +18,15 @@ form.addEventListener('submit', function (event) {
     // Logic to handle the new todo item
     console.log(`New Todo: ${title}, ${description}, ${priority}, ${category}, ${dueDate}`);
     Todos.addTodo(title, description, dueDate, priority, category);
-    DOM.displayTodo(Todos.todos);
+    DOM.displayTodo(Todos.todos.filter(item => item.category === category));
+    //underline the category of the new todo
+    document.querySelectorAll(".categoryItem").forEach(item => {
+        if (item.dataset.category == category){
+            item.style.textDecoration = "underline";
+        }
+        else
+            item.style.textDecoration = "none"
+    });
     // Reset the form after submission
     form.reset();
 });
@@ -65,7 +73,7 @@ document.querySelector("#TodoDetails").addEventListener("click", (e) => {
         };
         const id = e.target.dataset.id;
         Todos.editTodo(id, edited_todo);
-        DOM.displayTodo(Todos.todos);
+        DOM.displayTodo(Todos.todos.filter(item => item.category === category));
         document.querySelector("#detailstodoForm").classList.add("readonly");
     }
     else return;
@@ -78,3 +86,15 @@ document.querySelector("#newcategoryButton").addEventListener("click", (e) => {
     DOM.loadCategory(Category.categories);
     document.querySelector("#newCategory").value = ""
 }) 
+//Event listener for category filter
+document.querySelector("#categoryList").addEventListener("click", (e) => {
+    if (e.target.classList.contains("categoryItem")){
+        //remove text decoration for all other categories
+        document.querySelectorAll(".categoryItem").forEach(item => {
+            item.style.textDecoration = "none";
+        });
+        let category = e.target.dataset.category
+        DOM.displayTodo(Todos.todos.filter(item => item.category === category))
+        e.target.style.textDecoration = "underline"
+    }
+})
