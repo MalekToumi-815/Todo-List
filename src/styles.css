@@ -147,15 +147,21 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px;
-    margin: 20px;
+    margin: 20px 0px;
+    margin-right: 0px;
     gap: 10px;
     list-style: none;
     font-weight: 800;
+    width: 100%;
 }
 #categoryList li {
     cursor: pointer;
     transition: all 0.2s ease-in;
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 #categoryList li:hover{
     transform: translateY(-5px);

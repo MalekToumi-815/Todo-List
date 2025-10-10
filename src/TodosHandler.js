@@ -13,6 +13,7 @@ export const Todos = (() => {
     const addTodo  = (title, description, dueDate, priority, category) => {
         const todo = new Todo(title, description, dueDate, priority, category);
         todos.push(todo);
+        console.log(todo)
         return todo;
     }
     const deleteTodo = (id) => {
@@ -24,6 +25,11 @@ export const Todos = (() => {
             console.error(`Todo with ID ${id} not found`);
         }
         console.log(`Todo with ID ${id} deleted`);
+    }
+    const deleteCategoryTodos = (category) => {
+        const filtered = todos.filter(todo => todo.category !== category);
+        todos.length = 0;
+        todos.push(...filtered);
     }
     const findTodo = (id) => {
         return todos.find(todo => todo.id === id);
@@ -38,5 +44,5 @@ export const Todos = (() => {
             todo.category = update.category;
         }
     }
-    return { addTodo, deleteTodo, findTodo, editTodo , todos };
+    return { addTodo, deleteTodo, findTodo, editTodo , deleteCategoryTodos ,todos };
 })();

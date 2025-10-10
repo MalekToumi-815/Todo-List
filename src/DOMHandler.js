@@ -1,5 +1,7 @@
+import garbage from "./icons/garbage-svgrepo-com.png"
 const DOM = (() => {
     function displayTodo (todos) {
+        console.log(todos)
         const todoList = document.querySelector('.TodoList');
         todoList.innerHTML = '<h1>Todos</h1>'; // Clear existing todos
         todos.forEach(todo => {
@@ -76,10 +78,11 @@ const DOM = (() => {
         categories.forEach( category => {
             console.log(category)
             optionsSelect += `<option value="${category}">${category}</option>`
-            optionsList += `<li class="categoryItem" data-category="${category}">${category}</li>`
+            optionsList += `<li class="categoryItem" data-category="${category}">${category}<img alt="del-icon" class="icon delCategory"></li>`
         })
         categorySelect.innerHTML = optionsSelect
         categoryList.innerHTML = optionsList
+        document.querySelectorAll(".delCategory").forEach(img => img.src = garbage)
     }
     return { displayTodo , displayTodoDetails , loadCategory};
 })();

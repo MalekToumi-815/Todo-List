@@ -75,20 +75,27 @@ document.querySelector("#TodoDetails").addEventListener("click", (e) => {
         Todos.editTodo(id, edited_todo);
         DOM.displayTodo(Todos.todos.filter(item => item.category === category));
         document.querySelector("#detailstodoForm").classList.add("readonly");
+        document.querySelectorAll(".categoryItem").forEach(item => {
+            if (item.dataset.category == category){
+                item.style.textDecoration = "underline";
+            }
+            else
+                item.style.textDecoration = "none"
+            });
     }
     else return;
 });
-//Event listener for new category
-document.querySelector("#newcategoryButton").addEventListener("click", (e) => {
-    e.preventDefault()
-    let newcategory = document.querySelector("#newCategory").value
-    Category.addcategory(newcategory)
-    DOM.loadCategory(Category.categories);
-    document.querySelector("#newCategory").value = ""
-}) 
-//Event listener for category filter
-document.querySelector("#categoryList").addEventListener("click", (e) => {
-    if (e.target.classList.contains("categoryItem")){
+//Event listener for new , filter and delete category
+document.querySelector("nav").addEventListener("click", (e) => {
+    if (e.target.id === "newcategoryButton"){
+        e.preventDefault()
+        let newcategory = document.querySelector("#newCategory").value
+        if (!newcategory.trim()) return;
+        Category.addCategory(newcategory)
+        DOM.loadCategory(Category.categories);
+        document.querySelector("#newCategory").value = ""
+    }
+    else if (e.target.classList.contains("categoryItem")){
         //remove text decoration for all other categories
         document.querySelectorAll(".categoryItem").forEach(item => {
             item.style.textDecoration = "none";
@@ -97,4 +104,14 @@ document.querySelector("#categoryList").addEventListener("click", (e) => {
         DOM.displayTodo(Todos.todos.filter(item => item.category === category))
         e.target.style.textDecoration = "underline"
     }
-})
+    else if (e.target.classList.contains("delCategory")){
+        let category = e.target.parentElement.dataset.category
+        Category.deleteCategory(category)
+        DOM.loadCategory(Category.categories);
+        Todos.deleteCategoryTodos(category);
+        DOM.displayTodo(Todos.todos);
+        document.querySelectorAll(".categoryItem").forEach(item => {
+            item.style.textDecoration = "none";
+        });
+    }
+}) 
