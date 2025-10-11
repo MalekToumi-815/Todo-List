@@ -133,7 +133,7 @@ textarea {
     align-items: center;
     gap: 10px;
 }
-.icon-container img:hover {
+.icon:hover {
     transform: scale(1.1);
     transition: transform 0.2s ease;
 }
@@ -165,4 +165,58 @@ textarea {
 }
 #categoryList li:hover{
     transform: translateY(-5px);
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+dialog {
+    flex-direction: column;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(58, 89, 209, 0.15), 0 2px 4px rgba(0,0,0,0.06);
+    padding: 24px 32px;
+    background: #f8faff;
+    min-width: 320px;
+    max-width: 400px;
+    margin: auto;
+    font-family: inherit;
+}
+.radiogroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.radiogroup label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2E46B0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.dialogcontrol {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+.buttons {
+    background: #3A59D1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.buttons:hover {
+    background: #2E46B0;
+}
+#closeDialogIcon{
+    margin-left: auto;
 }

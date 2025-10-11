@@ -13,7 +13,7 @@
                 <label for="newcategory">New Category:</label>
                 <input type="text" id="newCategory" name="newcategory" required placeholder="   new category" />
             </div>
-            <input type="submit" value="Create Category" id="newcategoryButton">
+            <input type="submit" value="Create Category" id="newcategoryButton" class="buttons" />
         </form>
         <ul id="categoryList"></ul>
     </nav>
@@ -52,12 +52,15 @@
                 </div>
             
                 <div class="form-group">
-                    <button type="submit">Add Todo</button>
+                    <button type="submit" class="buttons">Add Todo</button>
                 </div>
             </form>
         </section>
         <section class="TodoList">
-            <h1>Todos</h1>
+            <div class="header">
+                <h1>Todos</h1>
+                <img src="./icons/filter-svgrepo-com.svg" alt="filter" class="icon" id="filterIcon">
+            </div>
         </section>
         <section id="TodoDetails">
             <h1>Todo Details:</h1>
@@ -68,5 +71,16 @@
             <form id="detailstodoForm" class="readonly"></form>
         </section>
     </main>
+    <dialog>
+        <img src="./icons/close-svgrepo-com.svg" alt="close-icon" class="icon" id="closeDialogIcon">
+        <div class="radiogroup">
+            <label><input type="radio" name="filter" value="Name"> Name</label>
+            <label><input type="radio" name="filter" value="Due Date"> Due Date</label>
+            <label><input type="radio" name="filter" value="Priority"> Priority</label>
+        </div>
+        <div class="dialogcontrol">
+            <button type="button" value="Apply" class="buttons">Apply</button>
+        </div>
+    </dialog>
 </body>
 </html>

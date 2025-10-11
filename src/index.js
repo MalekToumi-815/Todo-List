@@ -43,7 +43,11 @@ document.querySelector('.TodoList').addEventListener('click', (e) => {
         const todo = Todos.findTodo(todoId);
         DOM.displayTodoDetails(todo,Category.categories);
     }
-    else return;
+    else if ( e.target.id === "filterIcon") {
+        const dialog = document.querySelector("dialog");
+        dialog.showModal();
+        dialog.style.display = "flex";
+    }
 })
 // Event listener for TodoDetails closing & editing
 document.querySelector("#TodoDetails").addEventListener("click", (e) => {
@@ -115,3 +119,10 @@ document.querySelector("nav").addEventListener("click", (e) => {
         });
     }
 }) 
+// Event listener for dialog (filter)
+document.querySelector("dialog").addEventListener("click", (e) => {
+    if (e.target.id === "closeDialogIcon") {
+        document.querySelector("dialog").close()
+        document.querySelector("dialog").style.display = "none";
+    }
+})

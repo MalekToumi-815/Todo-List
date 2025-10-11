@@ -1,9 +1,12 @@
 import garbage from "./icons/garbage-svgrepo-com.png"
+import filterIcon from "./icons/filter-svgrepo-com.svg"
 const DOM = (() => {
     function displayTodo (todos) {
         console.log(todos)
         const todoList = document.querySelector('.TodoList');
-        todoList.innerHTML = '<h1>Todos</h1>'; // Clear existing todos
+        // Clear existing todos
+        todoList.innerHTML = '<div class="header"><h1>Todos</h1><img alt="filter" class="icon" id="filterIcon"></div>'; 
+        document.getElementById('filterIcon').src = filterIcon
         todos.forEach(todo => {
             const todoItem = document.createElement('div');
             todoItem.className = 'todo-item';
@@ -16,7 +19,7 @@ const DOM = (() => {
             todoItem.innerHTML = `
                 <div><h3>${todo.title}</h3>
                 <p>Due: ${todo.dueDate}</p></div>
-                <button class="delete-todo" data-id="${todo.id}">Delete</button>
+                <button class="delete-todo buttons" data-id="${todo.id}">Delete</button>
             `;
             todoList.appendChild(todoItem); 
         });
@@ -58,7 +61,7 @@ const DOM = (() => {
                 </div>
             
                 <div class="form-group">
-                    <button id="saveEdit" type="submit" data-id="${todo.id}">Save</button>
+                    <button id="saveEdit" type="submit" data-id="${todo.id}" class="buttons">Save</button>
                 </div>
         `;
         //load categories
