@@ -147,9 +147,9 @@ document.querySelector("dialog").addEventListener("click", (e) => {
         document.querySelector("dialog").style.display = "none";
     }
     else if (e.target.id === "ApplyFilter") {
-        const selectedFilter = document.querySelector('input[name="filter"]:checked').value;
+        const selectedFilter = document.querySelector('input[name="filter"]:checked') ;
         if (!selectedFilter) return;
-        switch(selectedFilter) {
+        switch(selectedFilter.value) {
             case "Name":
                 currentTodos.sort((a, b) => a.title.localeCompare(b.title));
                 break;
@@ -166,5 +166,6 @@ document.querySelector("dialog").addEventListener("click", (e) => {
         DOM.displayTodo(currentTodos);
         document.querySelector("dialog").close()
         document.querySelector("dialog").style.display = "none";
+        selectedFilter.checked = false;
     }
 })

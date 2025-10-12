@@ -9,10 +9,12 @@ class Todo {
     }
 }
 export const Todos = (() => {
-    const todos = []
+    const stored = localStorage.getItem("todos");
+    const todos = stored ? JSON.parse(stored) : [];
     const addTodo  = (title, description, dueDate, priority, category) => {
         const todo = new Todo(title, description, dueDate, priority, category);
         todos.push(todo);
+        localStorage.setItem("todos", JSON.stringify(todos));
         console.log(todo)
         return todo;
     }
@@ -20,6 +22,7 @@ export const Todos = (() => {
         const index = todos.findIndex(todo => todo.id === id);
         if (index !== -1) {
             todos.splice(index, 1);
+            localStorage.setItem("todos", JSON.stringify(todos));
         }
         else {
             console.error(`Todo with ID ${id} not found`);
@@ -30,6 +33,7 @@ export const Todos = (() => {
         const filtered = todos.filter(todo => todo.category !== category);
         todos.length = 0;
         todos.push(...filtered);
+        localStorage.setItem("todos", JSON.stringify(todos));
     }
     const findTodo = (id) => {
         return todos.find(todo => todo.id === id);
@@ -42,6 +46,7 @@ export const Todos = (() => {
             todo.dueDate = update.dueDate;
             todo.priority = update.priority;
             todo.category = update.category;
+            localStorage.setItem("todos", JSON.stringify(todos));
         }
     }
     return { addTodo, deleteTodo, findTodo, editTodo , deleteCategoryTodos ,todos };
