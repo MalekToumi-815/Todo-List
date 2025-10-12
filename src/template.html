@@ -59,7 +59,10 @@
         <section class="TodoList">
             <div class="header">
                 <h1>Todos</h1>
-                <img src="./icons/filter-svgrepo-com.svg" alt="filter" class="icon" id="filterIcon">
+                <div>
+                    <img src="./icons/arrow-up-wide-short-svgrepo-com.png" alt="arrow" class="icon" id="sortIcon">
+                    <img src="./icons/filter-svgrepo-com.svg" alt="filter" class="icon" id="filterIcon">
+                </div>
             </div>
         </section>
         <section id="TodoDetails">
@@ -74,12 +77,12 @@
     <dialog>
         <img src="./icons/close-svgrepo-com.svg" alt="close-icon" class="icon" id="closeDialogIcon">
         <div class="radiogroup">
-            <label><input type="radio" name="filter" value="Name"> Name</label>
-            <label><input type="radio" name="filter" value="Due Date"> Due Date</label>
-            <label><input type="radio" name="filter" value="Priority"> Priority</label>
+            <label><input type="radio" name="filter" value="Name" required> Name</label>
+            <label><input type="radio" name="filter" value="Due Date" required> Due Date</label>
+            <label><input type="radio" name="filter" value="Priority" required> Priority</label>
         </div>
         <div class="dialogcontrol">
-            <button type="button" value="Apply" class="buttons">Apply</button>
+            <button type="button" class="buttons" id="ApplyFilter">Apply</button>
         </div>
     </dialog>
 </body>

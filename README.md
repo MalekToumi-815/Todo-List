@@ -21,9 +21,6 @@ src/
   styles.css         # App styles
   template.html      # HTML template
   icons/             # SVG and PNG icons
-	 close-svgrepo-com.svg
-	 edit-3-svgrepo-com.svg
-	 garbage-svgrepo-com.png
 webpack.config.js    # Webpack configuration
 package.json         # Project metadata and scripts
 README.md            # Project documentation

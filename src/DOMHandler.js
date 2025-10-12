@@ -1,12 +1,11 @@
 import garbage from "./icons/garbage-svgrepo-com.png"
-import filterIcon from "./icons/filter-svgrepo-com.svg"
 const DOM = (() => {
     function displayTodo (todos) {
         console.log(todos)
         const todoList = document.querySelector('.TodoList');
         // Clear existing todos
-        todoList.innerHTML = '<div class="header"><h1>Todos</h1><img alt="filter" class="icon" id="filterIcon"></div>'; 
-        document.getElementById('filterIcon').src = filterIcon
+        //solution 1
+        todoList.querySelectorAll('.todo-item').forEach(child => todoList.removeChild(child));
         todos.forEach(todo => {
             const todoItem = document.createElement('div');
             todoItem.className = 'todo-item';
