@@ -9,6 +9,7 @@ A simple Todo List web application built with vanilla JavaScript, modular archit
 - Set priorities and due dates for each todo
 - Dynamic UI updates
 - Category management (add/delete categories)
+- Local Storage
 
 ## Project Structure
 
