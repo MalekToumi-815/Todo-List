@@ -16,6 +16,23 @@ header{
     margin: 10px 10px;
     border-radius: 20px;
 }
+/* Header inner wrapper to control padding and vertical centering */
+.header-inner {
+    height: 100%;
+    padding: 12px 24px; /* leave some room so title is slightly smaller than header */
+    display: flex;
+    align-items: center; /* vertically center the title */
+}
+
+.site-title {
+    color: #fff;
+    font-size: 2.5rem; /* large title that visually matches header height */
+    line-height: 1; /* keep it tight so it fits within header */
+    margin: 0;
+    font-weight: 700;
+    white-space: nowrap; /* avoid wrapping */
+    text-overflow: ellipsis;
+}
 nav{
     background-color: #2E46B0;
     margin: 10px 10px;
@@ -77,7 +94,13 @@ button {
     font-size: 0.9rem;
     height: 32px;
 }
-
+#newtodoForm input:focus,
+#newtodoForm textarea:focus,
+#newtodoForm select:focus {
+    border: 2px solid #3A59D1; /* blue outline on focus */
+    box-shadow: 0 0 5px rgba(58, 89, 209, 0.5); /* subtle shadow */
+    outline: none;
+}
 textarea {
     resize: none; /* keep layout neat */
     height: 50px; /* match inputs */
